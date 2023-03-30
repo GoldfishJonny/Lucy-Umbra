@@ -7,7 +7,10 @@ class Login:
         parent = os.getcwd()
         print(parent)
         # Get the path to the files folder
-        self.files = os.mkdir(parent + "/files")
+        try:
+            self.files = os.mkdir(parent + "/files")
+        except:
+            pass
 
     def fileSearch(self):
         try: 
