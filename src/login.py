@@ -7,6 +7,7 @@ class Login:
         parent = os.getcwd()
         print(parent)
         # Get the path to the files folder
+        self.client = None
         try:
             self.files = os.mkdir(parent + "/files")
         except:
@@ -15,7 +16,8 @@ class Login:
     def fileSearch(self):
         try: 
             print("Searching for Token...")
-            login = open(self.files, "r")
+            login = open("files/login.txt", "r")
+            print("Token found.")
             for line in login:
                 token = line
             login.close()
@@ -29,13 +31,35 @@ class Login:
             login.write(token)
             login.close()
             return token
-        
+    
+
+    def nameSearch(self):
+        try:
+            print("Searching for Name...")
+            name = open("files/name.txt", "r")
+            print("Name found.")
+            for line in name:
+                name = line
+            name.close()
+            return name
+
+        except:
+            print("There is no Name saved.")
+            print("Accessing name.")
+            name = self.client.user 
+            print(name)
+            name = open("files/name.txt", "x")
+            name.write(name)
+            name.close()
+            return name
     
     def login(self):
         token = self.fileSearch()
         intents = discord.Intents.all()
         intents.message_content = True
-        client = discord.Client(intents=intents)
-        client.run(token)
+        self.client = discord.Client(intents=intents)
+        self.client.run(token)
+        name = self.nameSearch()
+        print("name")
 
 
