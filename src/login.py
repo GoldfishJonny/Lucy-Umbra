@@ -33,25 +33,25 @@ class Login:
             return token
     
 
-    def nameSearch(self):
-        try:
-            print("Searching for Name...")
-            name = open("files/name.txt", "r")
-            print("Name found.")
-            for line in name:
-                name = line
-            name.close()
-            return name
+    # def nameSearch(self):
+    #     try:
+    #         print("Searching for Name...")
+    #         name = open("files/name.txt", "r")
+    #         print("Name found.")
+    #         for line in name:
+    #             name = line
+    #         name.close()
+    #         return name
 
-        except:
-            print("There is no Name saved.")
-            print("Accessing name.")
-            name = self.client.user 
-            print(name)
-            name = open("files/name.txt", "x")
-            name.write(name)
-            name.close()
-            return name
+    #     except:
+    #         print("There is no Name saved.")
+    #         print("Accessing name.")
+    #         name = self.client.user 
+    #         print(name)
+    #         name = open("files/name.txt", "x")
+    #         name.write(name)
+    #         name.close()
+    #         return name
     
     def login(self):
         token = self.fileSearch()
@@ -59,7 +59,8 @@ class Login:
         intents.message_content = True
         self.client = discord.Client(intents=intents)
         self.client.run(token)
-        name = self.nameSearch()
-        print("name")
+        # print("name")
+        # name = self.nameSearch()
+        
 
 
